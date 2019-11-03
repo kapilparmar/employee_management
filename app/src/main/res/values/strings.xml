@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">EmployeeManagement</string>
+    <string name="save">Save Details</string>
+    <string name="emp_name">Employee Name</string>
+    <string name="salary">Employee salary</string>
+    <string name="age">Employee Age</string>
+    <string name="somthing_went_wrong">Something went wrong! Check your internet and try after some time</string>
+    <string name="update">Update</string>
+    <string name="search_emp_id">Search Employee ID</string>
+    <string name="search_text">Search all employees?</string>
+    <string name="click_here">Click Here</string>
+    <string name="welcome">Welcome</string>
+    <string name="deleted">Account Deleted</string>
+    <string name="delete_confirm">Delete account ?</string>
+    <string name="yes">Yes</string>
+    <string name="updated">Profile Updated</string>
+    <string name="created">Account created succsessfully</string>
+    <string name="create_new">Create Employee Account</string>
+    <string name="all_feild_mandatory">All fields are mandatory</string>
+</resources>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/first_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0" />
+
+    <View
+        android:id="@+id/btn_save"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/logo_header"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/first_guideline"
+        app:layout_constraintBottom_toBottomOf="@+id/second_guideline"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/second_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.4" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:background="@color/white"
+        app:layout_constraintTop_toTopOf="@id/second_guideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:padding="5dp">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:visibility="gone"
+            android:id="@+id/progressBar"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt_welcome"
+            android:text="@string/welcome"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:padding="5dp"/>
+
+        <EditText
+            android:id="@+id/edt_search_emp_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/img_search"
+            android:hint="@string/search_emp_id"
+            android:padding="5dp"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/border_edittext"
+            android:layout_below="@+id/txt_welcome"/>
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/img_search"
+            android:layout_marginTop="50dp"
+            android:padding="5dp"
+            android:layout_below="@+id/txt_welcome"
+            android:background="@color/bg_coolr"
+            android:src="@drawable/ic_search_black_24dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt_search"
+            android:layout_below="@+id/edt_search_emp_id"
+            android:text="@string/search_text"
+            android:padding="5dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt_search_all_emp"
+            android:layout_below="@+id/edt_search_emp_id"
+            android:layout_toEndOf="@+id/txt_search"
+            android:text="@string/click_here"
+            android:textStyle="bold"
+            android:textColor="@color/colorAccent"
+            android:padding="5dp"/>
+
+        <Button
+            android:id="@+id/btn_create"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_search_all_emp"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="34dp"
+            android:background="@color/bg_coolr"
+            android:padding="10dp"
+            android:text="@string/create_new" />
+    </RelativeLayout>
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
