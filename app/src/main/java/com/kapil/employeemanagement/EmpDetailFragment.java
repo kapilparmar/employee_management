@@ -91,19 +91,22 @@ public class EmpDetailFragment extends Fragment implements View.OnClickListener,
     @Override
     public void onDetailClicked(final EmpDetailModel model, final int position) {
         EmpServerApiCalls  empServerApiCalls = new EmpServerApiCalls(context);
+        if (Utils.isNetConnected(context)) {
+            empServerApiCalls.deleteEmpDdetails(model.getId(), new EmpApiListener<DeleteResModel, ApiErrorModel>() {
+                @Override
+                public void onSuccess(DeleteResModel object) {
+                    Toast.makeText(context, R.string.deleted, Toast.LENGTH_SHORT).show();
+                    empDetailModelList.remove(model);
+                    empDetailAdapter.notifyItemRemoved(position);
+                }
 
-        empServerApiCalls.deleteEmpDdetails(model.getId(),new EmpApiListener<DeleteResModel, ApiErrorModel>() {
-            @Override
-            public void onSuccess(DeleteResModel object) {
-                Toast.makeText(context, R.string.deleted,Toast.LENGTH_SHORT).show();
-                empDetailModelList.remove(model);
-                empDetailAdapter.notifyItemRemoved(position);
-            }
-            @Override
-            public void onError(ApiErrorModel object) {
-                Toast.makeText(context, R.string.somthing_went_wrong,Toast.LENGTH_SHORT).show();
-            }
-        });
+                @Override
+                public void onError(ApiErrorModel object) {
+                    Toast.makeText(context, R.string.somthing_went_wrong, Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+        else Toast.makeText(context,R.string.no_internet,Toast.LENGTH_SHORT).show();
     }
 
     @Override

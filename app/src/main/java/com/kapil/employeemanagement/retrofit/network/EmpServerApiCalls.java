@@ -3,8 +3,10 @@ package com.kapil.employeemanagement.retrofit.network;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.widget.Toast;
 
 import com.kapil.employeemanagement.R;
+import com.kapil.employeemanagement.Utils;
 import com.kapil.employeemanagement.retrofit.model.ApiErrorModel;
 import com.kapil.employeemanagement.retrofit.model.DeleteResModel;
 import com.kapil.employeemanagement.retrofit.model.EmpDetailModel;
@@ -28,19 +30,21 @@ public class EmpServerApiCalls {
         empApiService = EmpServerApiClient.getClient().create(EmpApiService.class);
     }
     public void createEmpAccount(final PostEmployeeDetails empDetailModel, final EmpApiListener<EmpDetailModel, ApiErrorModel> listener){
-           empApiService.createEmployeeData(empDetailModel).enqueue(new Callback<EmpDetailModel>() {
-               @Override
-               public void onResponse(Call<EmpDetailModel> call, Response<EmpDetailModel> response) {
-                   if (response.body()!=null){
-                       listener.onSuccess(response.body());
-                   }
-               }
-               @Override
-               public void onFailure(Call<EmpDetailModel> call, Throwable t) {
-                   listener.onError(ApiErrorModel.buildErrorObject(t));
-               }
-           });
-    }
+            empApiService.createEmployeeData(empDetailModel).enqueue(new Callback<EmpDetailModel>() {
+                @Override
+                public void onResponse(Call<EmpDetailModel> call, Response<EmpDetailModel> response) {
+                    if (response.body() != null) {
+                        listener.onSuccess(response.body());
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<EmpDetailModel> call, Throwable t) {
+                    listener.onError(ApiErrorModel.buildErrorObject(t));
+                }
+            });
+
+        }
 
 
     public void getAllEmpRecords( final EmpApiListener<LinkedList<EmpDetailModel>, ApiErrorModel> listener){

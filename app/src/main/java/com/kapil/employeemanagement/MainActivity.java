@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,6 +19,8 @@ import com.kapil.employeemanagement.view.IEmpSearchView;
 
 import java.io.Serializable;
 import java.util.LinkedList;
+
+import okhttp3.internal.Util;
 
 import static com.kapil.employeemanagement.EmpAccountFragment.EMP_MODEL;
 import static com.kapil.employeemanagement.EmpAccountFragment.IS_UPDATE_PROFILE;
@@ -54,14 +57,23 @@ public class MainActivity extends AppCompatActivity implements IEmpSearchView,Vi
         switch (view.getId()){
             case R.id.txt_search_all_emp:
                 progressBar.setVisibility(View.VISIBLE);
-                iMainActivityEmpPresenter.searchAllEmp(context);
+                if (Utils.isNetConnected(context)) {
+                    iMainActivityEmpPresenter.searchAllEmp(context);
+                }  else Toast.makeText(context,R.string.no_internet,Toast.LENGTH_SHORT).show();
                 break;
             case R.id.img_search:
                 progressBar.setVisibility(View.VISIBLE);
-                iMainActivityEmpPresenter.searchSingleEmp(edtEmpId.getText().toString().trim(),context);
+                if(Utils.isNetConnected(context)) {
+                    iMainActivityEmpPresenter.searchSingleEmp(edtEmpId.getText().toString().trim(), context);
+
+                }
+               else Toast.makeText(context,R.string.no_internet,Toast.LENGTH_SHORT).show();
                 break;
             case R.id.btn_create:
-                iMainActivityEmpPresenter.createNewAccountClicked(context);
+                if(Utils.isNetConnected(context)) {
+                    iMainActivityEmpPresenter.createNewAccountClicked(context);
+                }
+                else Toast.makeText(context,R.string.no_internet,Toast.LENGTH_SHORT).show();
                 break;
         }
     }

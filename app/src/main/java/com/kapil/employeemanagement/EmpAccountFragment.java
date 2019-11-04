@@ -138,13 +138,14 @@ public class EmpAccountFragment extends Fragment implements IEmpAccountView, Vie
                     Toast.makeText(context, R.string.all_feild_mandatory,Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (!isUpdateDetail){
-                    employeeDetailsContractor.createEmpAccount(empDetails,getContext());
-                }
-                else {
-                    String id = empDetailModel.getId();
-                    employeeDetailsContractor.updateEmp(id ,empDetails,context);
-                }
+                if (Utils.isNetConnected(context)) {
+                    if (!isUpdateDetail) {
+                        employeeDetailsContractor.createEmpAccount(empDetails, getContext());
+                    } else {
+                        String id = empDetailModel.getId();
+                        employeeDetailsContractor.updateEmp(id, empDetails, context);
+                    }
+                }  else Toast.makeText(context,R.string.no_internet,Toast.LENGTH_SHORT).show();
                 break;
         }
     }
