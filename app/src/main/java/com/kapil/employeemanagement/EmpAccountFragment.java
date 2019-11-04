@@ -128,7 +128,6 @@ public class EmpAccountFragment extends Fragment implements IEmpAccountView, Vie
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.btn_save:
-                employeeDetailsContractor.setProgressBarVisibility(true);
                 PostEmployeeDetails empDetails = new PostEmployeeDetails();
                 empDetails.setAge(edtAge.getText().toString());
                 empDetails.setName(edtName.getText().toString());
@@ -139,6 +138,7 @@ public class EmpAccountFragment extends Fragment implements IEmpAccountView, Vie
                     return;
                 }
                 if (Utils.isNetConnected(context)) {
+                    employeeDetailsContractor.setProgressBarVisibility(true);
                     if (!isUpdateDetail) {
                         employeeDetailsContractor.createEmpAccount(empDetails, getContext());
                     } else {

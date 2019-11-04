@@ -56,25 +56,23 @@ public class MainActivity extends AppCompatActivity implements IEmpSearchView,Vi
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.txt_search_all_emp:
-                progressBar.setVisibility(View.VISIBLE);
                 if (Utils.isNetConnected(context)) {
+                    progressBar.setVisibility(View.VISIBLE);
                     iMainActivityEmpPresenter.searchAllEmp(context);
                 }  else Toast.makeText(context,R.string.no_internet,Toast.LENGTH_SHORT).show();
                 break;
             case R.id.img_search:
-                progressBar.setVisibility(View.VISIBLE);
+
                 if(Utils.isNetConnected(context)) {
+                    progressBar.setVisibility(View.VISIBLE);
                     iMainActivityEmpPresenter.searchSingleEmp(edtEmpId.getText().toString().trim(), context);
 
                 }
                else Toast.makeText(context,R.string.no_internet,Toast.LENGTH_SHORT).show();
                 break;
             case R.id.btn_create:
-                if(Utils.isNetConnected(context)) {
                     iMainActivityEmpPresenter.createNewAccountClicked(context);
-                }
-                else Toast.makeText(context,R.string.no_internet,Toast.LENGTH_SHORT).show();
-                break;
+                 break;
         }
     }
 
